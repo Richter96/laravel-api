@@ -3,12 +3,7 @@
 @section('content')
 <div class="container">
 
-    @if (session('message'))
-    <div class="alert alert-primary my-3" role="alert">
-        <strong>{{session('message')}}</strong>
-    </div>
-
-    @endif
+    @include('partials.message')
 
     <h1>MY PROJECTS</h1>
 

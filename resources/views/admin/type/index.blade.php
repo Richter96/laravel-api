@@ -3,17 +3,21 @@
 
 @section('content')
 <div class="container-md">
+
+
     <div class="row justify-content-center g-2 py-4">
         <div class="col">
+            @include('partials.errors')
+            @include('partials.message')
             <form action="{{route('admin.types.store',)}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="name">NOME</span>
-                    <input type="text" class="form-control" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name" name="name" id="name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name" name="name" id="name">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="image">LINK IMMAGINE</span>
-                    <input type="text" class="form-control" placeholder="link immagine" aria-label="link immagine" aria-describedby="image" name="image" id="image">
+                    <input type="text" class="form-control @error('image') is-invalid @enderror" placeholder="link immagine" aria-label="link immagine" aria-describedby="image" name="image" id="image">
                 </div>
                 <button type="submit" class="btn btn-light">Add</button>
             </form>
