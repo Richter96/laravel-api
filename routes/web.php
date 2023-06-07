@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\MockObject\Rule\Parameters;
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('projects', ProjectController::class)->Parameters([
         'Projects' => 'Project:slug' // con parameters vado a specificare che nel link voglio visualizzare lo slug
     ]);
+    Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
 });
 
 
