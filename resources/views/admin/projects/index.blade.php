@@ -24,6 +24,7 @@
                     <th scope="col">TITLE</th>
                     <th scope="col">SLUG</th>
                     <th scope="col">DESCRIPTION</th>
+                    <th scope="col">TIPOLOGIA</th>
                     <th class="col-2" scope="col">ACTION</th>
                 </tr>
             </thead>
@@ -42,6 +43,18 @@
                         <div class="">
                             {{$project->description}}
                         </div>
+                    </td>
+                    <td>
+                        @if ($project->type)
+                        <div class="">
+                            {{$project->type->name}}
+                        </div>
+                        @else
+                        <div class="">
+                            nessun type disponibile
+                        </div>
+                        @endif
+
                     </td>
                     <td>
                         <div class="row row-cols-3">
