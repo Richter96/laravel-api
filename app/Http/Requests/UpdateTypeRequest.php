@@ -13,7 +13,7 @@ class UpdateTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required | min:5 | max:100 ',
+            'image' => 'required | min:5',
         ];
     }
 }
