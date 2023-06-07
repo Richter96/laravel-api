@@ -42,7 +42,9 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // dd($request->all());
         $val_data =  $request->validated();
+
         // generate the title slug
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
