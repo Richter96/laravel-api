@@ -29,6 +29,7 @@ class StoreProjectRequest extends FormRequest
             'link_ghit' => 'required | min:5',
             'link_site' => 'required | min:5',
             'description' => 'required | min:5',
+            'type' => 'required'
         ];
     }
 }

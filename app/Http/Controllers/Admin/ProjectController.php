@@ -29,9 +29,9 @@ class ProjectController extends Controller
     public function create()
     {
         //cosi facendo ho la table type all'interno di create project
-        $type = Type::orderByDesc('id')->get();
+        $types = Type::orderByDesc('id')->get();
 
-        return view('admin.projects.create', compact('type'));
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
