@@ -41,7 +41,7 @@ class TypeController extends Controller
     public function store(StoreTypeRequest $request)
     {
         $val_data = $request->validated();
-        $slug = Type::generateSlug($val_data['name']);
+        $slug = Str::slug($request->name);
         $val_data['slug'] = $slug;
         Type::create($val_data);
 

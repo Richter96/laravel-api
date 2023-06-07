@@ -9,11 +9,11 @@
                 @csrf
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="name">NOME</span>
-                    <input type="text" class="form-control" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name">
+                    <input type="text" class="form-control" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name" name="name" id="name">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="image">LINK IMMAGINE</span>
-                    <input type="text" class="form-control" placeholder="link immagine" aria-label="link immagine" aria-describedby="image">
+                    <input type="text" class="form-control" placeholder="link immagine" aria-label="link immagine" aria-describedby="image" name="image" id="image">
                 </div>
                 <button type="submit" class="btn btn-light">Add</button>
             </form>
@@ -24,8 +24,10 @@
                     @foreach ($types as $type)
                     <div class="col d-flex">
                         <div class="card">
-                            <img class="card-img-top" src="{{$type->image}}" alt="{{$type->name}}">
-                            <div class="card-body">
+                            <div class="card-header">
+                                <img class="card-img-top" src="{{$type->image}}" alt="{{$type->name}}">
+                            </div>
+                            <div class="card-body text_card">
                                 <h4 class="card-title">{{$type->name}}</h4>
                                 <a name="" id="" class="btn btn-info" href="{{route('admin.types.edit', $type)}}" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
                             </div>
