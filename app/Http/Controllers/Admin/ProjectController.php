@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -27,7 +28,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        //cosi facendo ho la table type all'interno di create project
+        $type = Type::orderByDesc('id')->get();
+
+        return view('admin.projects.create', compact('type'));
     }
 
     /**
