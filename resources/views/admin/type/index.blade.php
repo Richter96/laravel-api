@@ -7,20 +7,39 @@
 
     <div class="row justify-content-center g-2 py-4">
         <div class="col">
-            @include('partials.errors')
-            @include('partials.message')
-            <form action="{{route('admin.types.store',)}}" method="post">
-                @csrf
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="name">NOME</span>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name" name="name" id="name">
+            <div class="col">
+                @include('partials.errors')
+                @include('partials.message')
+                <form action="{{route('admin.types.store',)}}" method="post">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="name">NOME</span>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="inserisci nome type" aria-label="Username" aria-describedby="name" name="name" id="name">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="image">LINK IMMAGINE</span>
+                        <input type="text" class="form-control @error('image') is-invalid @enderror" placeholder="link immagine" aria-label="link immagine" aria-describedby="image" name="image" id="image">
+                    </div>
+                    <button type="submit" class="btn btn-light">Add</button>
+                </form>
+            </div>
+            <div class="col">
+                @if($Single_type)
+                <div class="container-md my-5">
+                    <div class="row py-5 shadow">
+                        <div class="col-6">
+                            <img src="{{$Single_type->image}}" class="card-img-top " alt="{{$Single_type->name}}">
+                        </div>
+                        <div class="col ">
+                            <div class="card-body">
+                                <h2 class="card-title py-2">{{$Single_type->name}}</h2>
+                                <h5 class="card-title">{{$Single_type->slug}}</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="image">LINK IMMAGINE</span>
-                    <input type="text" class="form-control @error('image') is-invalid @enderror" placeholder="link immagine" aria-label="link immagine" aria-describedby="image" name="image" id="image">
-                </div>
-                <button type="submit" class="btn btn-light">Add</button>
-            </form>
+                @endif
+            </div>
         </div>
         <div class="col">
             <div class="container">
@@ -29,15 +48,20 @@
                     <div class="col d-flex">
                         <div class="card">
                             <div class="card-header">
-                                <img class="card-img-top" src="{{$type->image}}" alt="{{$type->name}}">
+                                <a href="{{route('admin.types.show', $type)}}"><img class="card-img-top" src="{{$type->image}}" alt="{{$type->name}}"></a>
                             </div>
                             <div class="card-body text_card">
-                                <h4 class="card-title">{{$type->name}}</h4>
-                                <a name="" id="" class="btn btn-info" href="{{route('admin.types.edit', $type)}}" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
-                                <!-- Modal trigger button -->
-                                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId-{{$type->id}}">
-                                    Launch
-                                </button>
+                                <div class="py-2 ">
+                                    <h4 class="card-title d-inline">{{$type->name}}</h4>
+                                    <span class="badge bg-dark">{{$type->projects->count()}}</span>
+                                </div>
+                                <div>
+                                    <a name="" id="" class="btn btn-info d" href="{{route('admin.types.edit', $type)}}" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
+                                    <!-- Modal trigger button -->
+                                    <button type="button" class="btn btn-info pe-3" data-bs-toggle="modal" data-bs-target="#modalId-{{$type->id}}">
+                                        <i class="fas fa-trash fa-sm fa-fw w-50 "></i>
+                                    </button>
+                                </div>
 
                                 <!-- Modal Body -->
                                 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->

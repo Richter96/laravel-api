@@ -17,9 +17,10 @@ class TypeController extends Controller
      */
     public function index()
     {
+        $Single_type = '';
         $types = Type::orderByDesc('id')->get();
 
-        return view('admin.type.index', compact('types'));
+        return view('admin.type.index', compact('types', 'Single_type'));
     }
 
     /**
@@ -56,7 +57,12 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        // dd($Single_type);
+        $Single_type = $type;
+        $types = Type::orderByDesc('id')->get();
+
+        // dd($Single_type);
+        return view('admin.type.index', compact('Single_type', 'types'));
     }
 
     /**
