@@ -8,8 +8,11 @@
         </div>
         <div class="col px-5 me-5">
             <div class="card-body">
-                <h2 class="card-title p-4">{{$project->title}}</h2>
-                <p class="card-text p-2">{{$project->text}}</p>
+                <h2 class="card-title py-4">{{$project->title}}</h2>
+                <div>
+                    <span class="badge bg-info">{{$project->type?->name}}</span>
+                </div>
+                <p class="card-text p-2">{{$project->description}}</p>
             </div>
         </div>
     </div>

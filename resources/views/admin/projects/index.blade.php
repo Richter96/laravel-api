@@ -38,7 +38,11 @@
 
                     <td>{{$project->title}}</td>
                     <td>{{$project->slug}}</td>
-                    <td>{{$project->text}}</td>
+                    <td>
+                        <div class="">
+                            {{$project->description}}
+                        </div>
+                    </td>
                     <td>
                         <div class="row row-cols-3">
 
@@ -49,6 +53,7 @@
                             <div class="icon d-inline">
                                 <a name="" id="" class="bg-violet-500 btn btn-primary w-1rem" href="{{ route('admin.projects.edit', $project) }}" role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
                             </div>
+
                             <div class="icon d-inline">
 
                                 <!-- Modal trigger button -->
