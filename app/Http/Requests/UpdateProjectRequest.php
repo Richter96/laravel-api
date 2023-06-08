@@ -30,7 +30,8 @@ class UpdateProjectRequest extends FormRequest
             'link_ghit' => 'required | min:5',
             'link_site' => 'required | min:5',
             'description' => 'required | min:5',
-            'type_id' => ['exists:types,id']
+            'type_id' => ['exists:types,id'],
+            'technology_id' => ['exists:technologies,id'],
         ];
     }
 }
