@@ -20,6 +20,7 @@
                     <th scope="col">SLUG</th>
                     <th scope="col">DESCRIPTION</th>
                     <th scope="col">TIPOLOGIA</th>
+                    <th scope="col">TECHNOLOGI</th>
                     <th class="col-2" scope="col">ACTION</th>
                 </tr>
             </thead>
@@ -50,6 +51,15 @@
                         </div>
                         @endif
 
+                    </td>
+                    <td>
+                        <ul>
+                            @forelse($project->technologies as $technology)
+                            <li>{{$technology?->name}}</li>
+                            @empty
+                            <li class=" list-unstyled">nessuna technology selezionata</li>
+                            @endforelse
+                        </ul>
                     </td>
                     <td>
                         <div class="row row-cols-3">
