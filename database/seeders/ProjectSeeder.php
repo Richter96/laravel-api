@@ -19,14 +19,14 @@ class ProjectSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
 
-            $post = new Project();
-            $post->title = $faker->sentence(4);
-            $post->slug = Str::slug($post->title, '-');
-            $post->description = $faker->paragraphs(asText: true);
-            $post->image = $faker->imageUrl(category: 'Posts', format: 'jpg');
-            $post->link_ghit = $faker->url();
-            $post->link_site = $faker->url();
-            $post->save();
+            $project = new Project();
+            $project->title = $faker->sentence(4);
+            $project->slug = Str::slug($project->title, '-');
+            $project->description = $faker->paragraphs(asText: true);
+            $project->image = $faker->imageUrl(category: 'Posts', format: 'jpg');
+            $project->link_ghit = $faker->url();
+            $project->link_site = $faker->url();
+            $project->save();
         }
     }
 }
