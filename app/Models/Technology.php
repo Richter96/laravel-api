@@ -10,6 +10,9 @@ class Technology extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'slug', 'project_id'];
+
+
     /**
      * The projects that belong to the Technology
      *
