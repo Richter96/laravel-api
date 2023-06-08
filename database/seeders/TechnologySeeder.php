@@ -22,6 +22,7 @@ class TechnologySeeder extends Seeder
             $newtechnology = new Technology();
             $newtechnology->name = $technology;
             $newtechnology->slug = Str::slug($newtechnology->name, '-');
+            $newtechnology->save();
         }
     }
 }
