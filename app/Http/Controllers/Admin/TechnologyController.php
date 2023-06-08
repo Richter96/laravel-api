@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -15,7 +17,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::all();
+        return view('admin.technology.index', compact('technologies'));
     }
 
     /**
@@ -36,7 +39,12 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Str::slug($request->name);
+        $val_data['slug'] = $slug;
+        Technology::create($val_data);
+
+        return to_route('admin.technologies.index')->with('message', 'type creato con successo');
     }
 
     /**
@@ -70,7 +78,12 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->validated();
+        $slug = Str::slug($request->name);
+        $val_data['slug'] = $slug;
+        $technology = Technology::create($val_data);
+
+        return to_route('admin.technologies.index', '')->with('message', 'type creato con successo');
     }
 
     /**
@@ -81,6 +94,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return to_route('admin.technologies.index')->with('message', 'Technology Eliminato con successo');
     }
 }
