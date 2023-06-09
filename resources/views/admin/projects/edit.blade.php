@@ -63,24 +63,28 @@
                 <option value="{{$type?->id}}" {{$type?->id == old('type_id', $project->type?->id) ? 'selected' : ''}}>{{$type?->name}}</option>
                 @endforeach
             </select>
+            <small id=" helpId" class="form-text text-muted">Inserire un type</small>
         </div>
         {{-- technologies --}}
-        <div class='form-group'>
-            <p>Seleziona le technologies:</p>
-            @foreach ($technologies as $technology)
-            <div class="form-check @error('technologies') is-invalid @enderror">
-                <label class='form-check-label'>
-                    @if($errors->any())
-                    {{-- 1 (if) --}}
-                    <input name="technologies[]" type="checkbox" value="{{ $technology->id}}" class="form-check-input" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
-                    @else
-                    {{-- 2 (else) --}}
-                    <input name='technologies[]' type='checkbox' value='{{ $technology->id }}' class='form-check-input' {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
-                    @endif
-                    {{ $technology->name }}
-                </label>
+        <div class='form-group mb-3'>
+            <p>SELEZIONA LE TECNOLOGIE UTILIZZATE:</p>
+            <div class=" overflow-scroll technology_box border-1 border p-1 rounded">
+                @foreach ($technologies as $technology)
+                <div class="form-check @error('technologies') is-invalid @enderror">
+                    <label class='form-check-label'>
+                        @if($errors->any())
+                        {{-- 1 (if) --}}
+                        <input name="technologies[]" type="checkbox" value="{{ $technology->id}}" class="form-check-input" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        @else
+                        {{-- 2 (else) --}}
+                        <input name='technologies[]' type='checkbox' value='{{ $technology->id }}' class='form-check-input' {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
+                        @endif
+                        {{ $technology->name }}
+                    </label>
+                </div>
+                @endforeach
             </div>
-            @endforeach
+            <small id=" helpId" class="form-text text-muted">scroll for more</small>
             @error('technologies')
             <div class='invalid-feedback'>{{ $message}}</div>
             @enderror
