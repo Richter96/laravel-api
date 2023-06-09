@@ -55,17 +55,15 @@
             @enderror
         </div>
         {{-- type --}}
-        @if ($project->type_id != null)
         <div class="mb-3">
             <label for="type_id" class="form-label">TIPO PROGETTO</label>
             <select class="form-select form-select-md" aria-describedby="helpId" name="type_id" id="type_id" @error('link_site') is-invalid @enderror>
                 <option selected>selezionare il tipo</option>
                 @foreach ($types as $type)
-                <option value="{{$type->id}}" {{$type->id == old('type_id', $project->type->id) ? 'selected' : ''}}>{{$type->name}}</option>
+                <option value="{{$type?->id}}" {{$type?->id == old('type_id', $project->type?->id) ? 'selected' : ''}}>{{$type?->name}}</option>
                 @endforeach
             </select>
         </div>
-        @endif
         {{-- technologies --}}
         <div class='form-group'>
             <p>Seleziona le technologies:</p>

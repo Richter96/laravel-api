@@ -51,19 +51,19 @@
                 @endforeach
             </select>
         </div>
-
-        <div class='form-group'>
-            <p>Seleziona i tag:</p>
-            <div class="">
+        {{-- technology --}}
+        <div class='form-group mb-3'>
+            <p>TECHNOLOGY:</p>
+            <div class=" overflow-scroll technology_box border-1 border p-1 rounded">
                 @foreach ($technologies as $technology)
-                <div class="form-check @error('tags') is-invalid @enderror">
+                <div class="form-check @error('technologies') is-invalid @enderror">
                     <label class='form-check-label'>
-                        <input name='tags[]' type='checkbox' value='{{ $technology->id}}' class='form-check-input' {{ in_array($technology->id, old('tags', [])) ? 'checked' : '' }}>
+                        <input name='technologies[]' type='checkbox' value='{{ $technology->id}}' class="form-check-input" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
                         {{ $technology->name }}
                     </label>
                 </div>
                 @endforeach
-                @error('tags')
+                @error('technologies')
                 <div class='invalid-feedback'>{{ $message}}</div>
                 @enderror
             </div>
