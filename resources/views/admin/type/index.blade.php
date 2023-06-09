@@ -34,6 +34,7 @@
                             <div class="card-body">
                                 <h2 class="card-title py-2">{{$Single_type->name}}</h2>
                                 <h5 class="card-title">{{$Single_type->slug}}</h5>
+                                <span class="badge bg-dark">{{$Single_type->projects->count()}}</span>
                             </div>
                         </div>
                     </div>
