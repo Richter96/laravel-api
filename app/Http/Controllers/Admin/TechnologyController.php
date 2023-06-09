@@ -66,7 +66,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view('admin.technology.edit', compact('technology'));
     }
 
     /**
@@ -81,9 +81,9 @@ class TechnologyController extends Controller
         $val_data = $request->validated();
         $slug = Str::slug($request->name);
         $val_data['slug'] = $slug;
-        $technology = Technology::create($val_data);
+        $technology->update($val_data);
 
-        return to_route('admin.technologies.index', '')->with('message', 'type creato con successo');
+        return to_route('admin.technologies.index')->with('message', 'type creato con successo');
     }
 
     /**
