@@ -105,9 +105,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="{{route('admin.technologies.index')}}">
                                     <i class="fa-solid fa-tags"></i>
-                                    Tags
+                                    Technology
                                 </a>
                             </li>
 
