@@ -17,16 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //crea dal factory user dati fake
+        \App\Models\User::factory(1)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //crea dal factory user dati fake
+        \App\Models\User::factory()->create([
+            'name' => 'Riccardo',
+            'email' => 'Riccardo@example.com',
+        ]);
+
         // per dire al database di seedare tutto assieme
         $this->call([
-            Project::class,
-            Type::class
+            ProjectSeeder::class,
+            TypeSeeder::class,
+            TechnologySeeder::class,
+
         ]);
     }
 }
