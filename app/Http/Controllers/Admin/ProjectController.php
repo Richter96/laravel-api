@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
 
-        dd($val_data);
+        // dd($val_data);
         $project = Project::create($val_data);
 
         //aggiungere il check technology
