@@ -50,6 +50,6 @@ class User extends Authenticatable
      */
     public function projects(): HasMany
     {
-        return $this->hasMany(projects::class);
+        return $this->hasMany(Project::class);
     }
 }

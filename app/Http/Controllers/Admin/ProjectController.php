@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
@@ -19,7 +20,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+
+        // dd(Auth::user(), Auth::id());
+
+        $projects = Auth::user()->projects()->orderByDesc('id')->get();
+
         return view('admin.projects.index', compact('projects'));
     }
 
