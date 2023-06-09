@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         //crea dal factory user dati fake
         \App\Models\User::factory(1)->create();
 
-        //crea dal factory user dati fake
+        //crea dal factory user dati fake, ma con nome ed email specifici
         \App\Models\User::factory()->create([
             'name' => 'Riccardo',
             'email' => 'Riccardo@example.com',
