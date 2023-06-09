@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Models\Type;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -49,7 +50,9 @@ class ProjectController extends Controller
         // generate the title slug
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
-        // dd($val_data);
+        $val_data['user_id'] = Auth::id();
+
+        dd($val_data);
         $project = Project::create($val_data);
 
         //aggiungere il check technology
