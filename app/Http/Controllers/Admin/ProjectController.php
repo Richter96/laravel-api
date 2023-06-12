@@ -10,6 +10,7 @@ use App\Models\Technology;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -63,6 +64,11 @@ class ProjectController extends Controller
         //aggiungere il check technology
         if ($request->has('technologies')) {
             $project->technologies()->attach($request->technologies);
+        }
+
+        if ($request->hasFile('image')) {
+            $image_path = Storage::put('uploads', $request->image);
+            // dd($image_path);
         }
 
 
