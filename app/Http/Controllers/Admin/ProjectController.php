@@ -55,22 +55,28 @@ class ProjectController extends Controller
 
         // generate the title slug
         $slug = Project::generateSlug($val_data['title']);
+
         $val_data['slug'] = $slug;
         $val_data['user_id'] = Auth::id();
 
         // dd($val_data);
-        $project = Project::create($val_data);
 
         //aggiungere il check technology
-        if ($request->has('technologies')) {
-            $project->technologies()->attach($request->technologies);
-        }
+
 
         if ($request->hasFile('image')) {
             $image_path = Storage::put('uploads', $request->image);
             // dd($image_path);
+            //bisogna inserire all'interno di val_data che image ha un nuovo percorso
+            $val_data['image'] = $image_path;
+            // dd($val_data);
         }
 
+        $project = Project::create($val_data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
 
         // redirect back
         return to_route('admin.projects.index')->with('message', 'Progetto creato con successo');

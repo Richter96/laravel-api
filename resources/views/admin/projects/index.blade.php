@@ -30,7 +30,7 @@
                 <tr>
                     <td scope="row">{{$project->id}}</td>
                     <td>
-                        <img width="100" class="img-fluid" src="{{$project->image}}" alt="{{$project->title}}">
+                        <img width="100" class="img-fluid" src="{{ asset('storage/' . $project->image)}}" alt="{{$project->title}}">
                     </td>
 
                     <td>{{$project->title}}</td>
