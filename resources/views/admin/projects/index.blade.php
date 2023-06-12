@@ -18,7 +18,7 @@
                     <th scope="col">IMAGE</th>
                     <th scope="col">TITLE</th>
                     <th scope="col">SLUG</th>
-                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col-4">DESCRIPTION</th>
                     <th scope="col">TIPOLOGIA</th>
                     <th scope="col">TECHNOLOGI</th>
                     <th class="col-2" scope="col">ACTION</th>
@@ -36,8 +36,8 @@
                     <td>{{$project->title}}</td>
                     <td>{{$project->slug}}</td>
                     <td>
-                        <div class="">
-                            {{$project->description}}
+                        <div class="col">
+                            <p>{{$project->description}}</p>
                         </div>
                     </td>
                     <td>
