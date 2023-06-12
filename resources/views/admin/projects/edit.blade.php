@@ -7,7 +7,7 @@
 
     @include('partials.errors')
 
-    <form action="{{ route('admin.projects.update', $project )}}" method="post">
+    <form action="{{ route('admin.projects.update', $project )}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         {{-- title --}}
@@ -22,15 +22,19 @@
             @enderror
         </div>
         {{-- img --}}
-        <div class="mb-3">
-            <label for="image" class="form-label">IMMGAIN</label>
-            <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image" aria-describedby="helpId" placeholder="http://" value="{{ old('image', $project->image) }}">
-            <small id=" helpId" class="form-text text-muted">inserire url dell'immagine</small>
-            @error('image')
-            <div class="alert alert-danger" role="alert">
-                <strong>Image, Error:</strong>{{ $message }}
+        <div class="d-flex gap-3">
+            <img class="img-fluid w-25" src="{{ asset('storage/' . $project->image)}}" alt="{{$project->title}}">
+
+            <div class="mb-3">
+                <label for="image" class="form-label">INSERISCI UNA NUOVA IMMAGINE</label>
+                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" aria-describedby="helpId" value="{{ old('image', $project->image) }}">
+                <small id=" helpId" class="form-text text-muted">seleziona immagine max 995 kb</small>
+                @error('image')
+                <div class="alert alert-danger" role="alert">
+                    <strong>Image, Error:</strong>{{ $message }}
+                </div>
+                @enderror
             </div>
-            @enderror
         </div>
         {{-- link ghit --}}
         <div class="mb-3">

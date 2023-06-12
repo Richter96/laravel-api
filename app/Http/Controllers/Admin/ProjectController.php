@@ -121,6 +121,20 @@ class ProjectController extends Controller
         $slug = Project::generateSlug($val_data['title']);
         $val_data['slug'] = $slug;
 
+        if ($request->hasFile('image')) {
+
+
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+
+            $image_path = Storage::put('uploads', $request->image);
+            // dd($image_path);
+            //bisogna inserire all'interno di val_data che image ha un nuovo percorso
+            $val_data['image'] = $image_path;
+            // dd($val_data);
+        }
+
         $project->update($val_data);
 
         //aggiungere il check technology
@@ -139,6 +153,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->image) {
+            Storage::delete($project->image);
+        }
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Progetto eliminato');
     }
