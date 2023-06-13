@@ -49,7 +49,7 @@
         </div>
         {{-- link site --}}
         <div class="mb-3">
-            <label for="link_site" class="form-label">LINK GIHTUB</label>
+            <label for="link_site" class="form-label">LINK SITE</label>
             <input type="text" class="form-control @error('link_site') is-invalid @enderror" name="link_site" id="link_site" aria-describedby="helpId" placeholder="http://" value="{{ old('link_site', $project->link_site) }}">
             <small id=" helpId" class="form-text text-muted">inserire url del sito del progetto</small>
             @error('link_site')
