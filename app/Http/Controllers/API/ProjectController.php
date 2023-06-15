@@ -4,8 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use GrahamCampbell\ResultType\Success;
-use Nette\Utils\Json;
 
 class ProjectController extends Controller
 {
@@ -25,12 +23,12 @@ class ProjectController extends Controller
 
         if ($project) {
             return response()->json([
-                'Success' => true,
+                'success' => true,
                 'result' => $project,
             ]);
         } else {
             return response()->json([
-                'Success' => false,
+                'success' => false,
                 'result' => 'page not found 404',
             ]);
         }
