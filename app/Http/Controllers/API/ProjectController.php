@@ -11,10 +11,17 @@ class ProjectController extends Controller
     {
         $projects = Project::with(['technologies', 'type', 'user'])->orderBy('id')->paginate(6);
 
-        return response()->json([
-            'succes' => true,
-            'project' => $projects,
-        ]);
+        if (count($projects) > 0) {
+            return response()->json([
+                'succes' => true,
+                'project' => $projects,
+            ]);
+        } else {
+            return response()->json([
+                'succes' => true,
+                'project' => $projects,
+            ]);
+        }
     }
 
     public function show($slug)

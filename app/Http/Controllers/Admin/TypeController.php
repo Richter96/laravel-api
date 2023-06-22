@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Type;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
 class TypeController extends Controller
@@ -36,7 +36,6 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTypeRequest $request)
@@ -52,7 +51,6 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function show(Type $type)
@@ -68,7 +66,6 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function edit(Type $type)
@@ -79,8 +76,6 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTypeRequest  $request
-     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateTypeRequest $request, Type $type)
@@ -92,19 +87,19 @@ class TypeController extends Controller
 
         $type->update($val_data);
 
-        return to_route('admin.types.index')->with('message', 'type creato con successo');
+        return to_route('admin.types.index')->with('message', 'type modificato con successo');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy(Type $type)
     {
         // dd($type);
         $type->delete();
+
         return to_route('admin.types.index')->with('message', 'Type Eliminato con successo');
     }
 }
